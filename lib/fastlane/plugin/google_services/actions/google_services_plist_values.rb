@@ -41,7 +41,7 @@ module Fastlane
 					puts("")
 					puts(table)
 				end
-				
+
 				plist
 			end
 
