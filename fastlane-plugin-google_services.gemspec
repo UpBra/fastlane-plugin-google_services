@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
 	spec.name = 'fastlane-plugin-google_services'
 	spec.version = Fastlane::GoogleServices::VERSION
 	spec.author = 'Blair Replogle'
-	spec.email = 'none@none.com'
+	spec.email = 'UpBra@users.noreply.github.com'
 
 	spec.summary = 'Access values from google services files'
 	# spec.homepage = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-google_services"

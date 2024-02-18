@@ -6,12 +6,12 @@ module Fastlane
 	module Actions
 
 		module SharedValues
-			GS_PLIST_VALUES_GOOGLE_APP_ID = :GS_PLIST_VALUES_GOOGLE_APP_ID
-			GS_PLIST_VALUES_BUNDLE_ID = :GS_PLIST_VALUES_BUNDLE_ID
-			GS_PLIST_VALUES_PROJECT_ID = :GS_PLIST_VALUES_PROJECT_ID
+			GOOGLE_SERVICES_PLIST_VALUES_GOOGLE_APP_ID = :GOOGLE_SERVICES_PLIST_VALUES_GOOGLE_APP_ID
+			GOOGLE_SERVICES_PLIST_VALUES_BUNDLE_ID = :GOOGLE_SERVICES_PLIST_VALUES_BUNDLE_ID
+			GOOGLE_SERVICES_PLIST_VALUES_PROJECT_ID = :GOOGLE_SERVICES_PLIST_VALUES_PROJECT_ID
 		end
 
-		class GsPlistValuesAction < Action
+		class GoogleServicesPlistValuesAction < Action
 
 			module Key
 				PATH = :path
@@ -26,9 +26,9 @@ module Fastlane
 					path = File.expand_path(params[Key::PATH])
 					plist = File.open(path) { |f| Plist.parse_xml(f) }
 
-					lane_context[SharedValues::GS_PLIST_VALUES_GOOGLE_APP_ID] = plist['GOOGLE_APP_ID']
-					lane_context[SharedValues::GS_PLIST_VALUES_BUNDLE_ID] = plist['BUNDLE_ID']
-					lane_context[SharedValues::GS_PLIST_VALUES_PROJECT_ID] = plist['PROJECT_ID']
+					lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_GOOGLE_APP_ID] = plist['GOOGLE_APP_ID']
+					lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_BUNDLE_ID] = plist['BUNDLE_ID']
+					lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_PROJECT_ID] = plist['PROJECT_ID']
 				rescue StandardError => e
 					UI.error(e)
 				end
@@ -57,12 +57,12 @@ module Fastlane
 				[
 					FastlaneCore::ConfigItem.new(
 						key: Key::PATH,
-						env_name: 'GS_PLIST_VALUES_PATH',
+						env_name: 'GOOGLE_SERVICES_PLIST_VALUES_PATH',
 						description: 'Path to google services plist file'
 					),
 					FastlaneCore::ConfigItem.new(
 						key: Key::PRINT,
-						env_name: 'GS_PLIST_VALUES_PRINT',
+						env_name: 'GOOGLE_SERVICES_PLIST_VALUES_PRINT',
 						description: 'Print the values from the google services plist file?',
 						type: Boolean,
 						default_value: true
@@ -72,9 +72,9 @@ module Fastlane
 
 			def self.output
 				[
-					['GS_PLIST_VALUES_GOOGLE_APP_ID', 'The GOOGLE_APP_ID from the google services file'],
-					['GS_PLIST_VALUES_BUNDLE_ID', 'The BUNDLE_ID from the google services file'],
-					['GS_PLIST_VALUES_PROJECT_ID', 'The PROJECT_ID from the google services file']
+					['GOOGLE_SERVICES_PLIST_VALUES_GOOGLE_APP_ID', 'The GOOGLE_APP_ID from the google services file'],
+					['GOOGLE_SERVICES_PLIST_VALUES_BUNDLE_ID', 'The BUNDLE_ID from the google services file'],
+					['GOOGLE_SERVICES_PLIST_VALUES_PROJECT_ID', 'The PROJECT_ID from the google services file']
 				]
 			end
 
