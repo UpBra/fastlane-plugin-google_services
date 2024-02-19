@@ -22,6 +22,11 @@ module Fastlane
 				require "plist"
 				require "terminal-table"
 
+				FastlaneCore::PrintTable.print_values(
+					title: 'Google Services Plist Values',
+					config: params
+				)
+
 				begin
 					path = File.expand_path(params[Key::PATH])
 					plist = File.open(path) { |f| Plist.parse_xml(f) }
