@@ -12,15 +12,24 @@ fastlane add_plugin google_services
 
 ## About google_services
 
-Access values from google services files
-
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+Access values from google services json files.
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
+```ruby
+# Get values from google services plist
+result = google_services_plist_values(
+	path: 'path/to/GoogleServices-Info.plist'
+)
 
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+# Read values directly from returned hash
+client_id = result['CLIENT_ID']
+
+# Access common values stored in lane_context
+google_app_id = lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_GOOGLE_APP_ID]
+bundle_id = lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_BUNDLE_ID]
+project_id = lane_context[SharedValues::GOOGLE_SERVICES_PLIST_VALUES_PROJECT_ID]
+```
 
 ## Run tests for this plugin
 
